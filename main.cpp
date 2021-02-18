@@ -26,6 +26,10 @@ GPS(double x, Compass y, double a, Compass b) {
   y = Compass::N;
   b = Compass::W;
   }
+   if ((0.0 <= x <= 90.0) && (0.0 <= a <= 180.0)){
+  y = Compass::N;
+  b = Compass::W;
+  }
    else if ((0.0 != x != 90.0) && (0.0 <= a >= 180.0)){
   x = 0;
   y = Compass::N;
@@ -47,6 +51,18 @@ GPS(double x, Compass y, double a, Compass b) {
 }
 GPS(double x, double a) {
   if ((0.0 <= x >= 90.0) && (0.0 <= a >= 180.0)){
+  latitude = x;
+  longitude = a;
+  latitudeDirection = Compass::N;
+  longitudeDirection = Compass::W;
+  }
+  if ((0.0 <= x <= 90.0) && (0.0 <= a <= 180.0)){
+  latitude = x;
+  longitude = a;
+  latitudeDirection = Compass::N;
+  longitudeDirection = Compass::W;
+  }
+  if ((0.0 >= x >= 90.0) && (0.0 >= a >= 180.0)){
   latitude = x;
   longitude = a;
   latitudeDirection = Compass::N;
