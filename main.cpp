@@ -1,5 +1,5 @@
 //------------------------------
-//  DO NOT MODIFY NEXT LINE
+//  DO NOT MODIFY NElatitudeT LINE
 //------------------------------
 #include "catch.hpp"
 //------------------------------
@@ -9,52 +9,66 @@ enum class Compass {N, S, W, E};
 
 // Write your code here
 class GPS {
-  private:
-  double latitude = {0.0};
-  double longitude = {0.0};
-  };
+private:
+double latitude;
 Compass latitudeDirection;
+double longitude;
 Compass longitudeDirection;
 
-  public:
+public:
+GPS(double x, Compass y, double a, Compass b) {
+  latitude = x;
+  latitudeDirection = y;
+  longitude = a;
+  longitudeDirection = b;
 
-  GPS::c(double x , Compass y, double a , Compass b){
-    latitude = x;
-    latitudeDirection = y;
-    longitude = a;
-    longitudeDirection = b;
+  if ((0.0 <= x >= 90.0) && (0.0 <= a >= 180.0)){
+  y = Compass::N;
+  b = Compass::W;
+  }
+  if ((0.0 > x) || (x > 90.0)){
+    x = 0;
+    y = Compass::N;
+  }
+  if ((0.0 > a) || (a > 180.0)){
+    a = 0;
+    b = Compass::W;
+  }
+}
+GPS(double x, double a) {
+  if ((0.0 <= x >= 90.0) && (0.0 <= a >= 180.0)){
+  latitude = x;
+  longitude = a;
+  latitudeDirection = Compass::N;
+  longitudeDirection = Compass::W;
+  }
+  if ((0.0 > x) || (x > 90.0)){
+    latitude = 0;
+    latitudeDirection = Compass::N;
+  }
+  if ((0.0 > a) || (a > 180.0)){
+    longitude = 0;
+    longitudeDirection = Compass::W;
+  }
+}
+GPS(){
+  longitude = 0;
+  latitude = 0;
+  latitudeDirection = Compass::N;
+  longitudeDirection = Compass::W;
+}
 
-    if ((x == NULL) && (a == NULL)){
-      y = Compass::N
-      y = Compass::W
+double getLatitude(){return latitude;}
 
-    }
-    else if((0.0 << x >> 90.0) && (0.0 << x >> 180.0))  {
+Compass getLatitudeDirection() {return latitudeDirection;}
 
+double getLongitude() {return longitude;}
 
-    }
-    else if(()&&()) {
+Compass getLongitudeDirection() {return longitudeDirection;}
 
-    }
+};
 
 
-      double getLatitude {
-        return latitude;
-      }
-
-      enum class Compass::getLatitudeDirection {
-        return latitudeDirection;
-
-      }
-
-      double getLongitude {
-        return longitude;
-
-      }
-
-      enum class Compass::getLongitudeDirection {
-        return longitudeDirection;
-      }
 
 
 
